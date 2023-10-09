@@ -1,0 +1,18 @@
+<form hx-post="/groups" hx-trigger="end" hx-swap="none" id="form-groups">
+    <p>TODO: search bar</p>
+    <div class="sortable">
+        {% for group in groups %}
+        <div>
+            <input type="hidden" name="ids" value="{{ group.id }}" form="form-groups">
+            <span class="sort-handle">::</span>
+            {% with group=group %}
+                {% if group.editing %}
+                    {% include 'group-edit.html' %}
+                {% else %}
+                    {% include 'group-view.html' %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        {% endfor %}
+    </div>
+</form>

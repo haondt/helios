@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Helios</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js"></script>
+        <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+        <script>
+            htmx.onLoad(function(content) {
+                var sortables = content.querySelectorAll(".sortable");
+                for (var i = 0; i < sortables.length; i++) {
+                    const sortable = sortables[i];
+                    new Sortable(sortable, {
+                        animation: 150,
+                        handle: ".sort-handle",
+                        ghostClass: 'blue-background-class'
+                    });
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <div hx-trigger="load" hx-get="groups" hx-swap="outerHTML"></div>
+    </body>
+</html>

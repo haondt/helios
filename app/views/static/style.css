@@ -1,0 +1,4 @@
+.sort-handle {
+    cursor: move;
+    cursor: -webkit-grabbing;
+}

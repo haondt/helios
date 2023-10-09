@@ -1,0 +1,9 @@
+<div id="group-{{ group.id }}">
+    <span hx-get="/group/{{ group.id }}/edit" hx-swap="outerHTML" hx-target="#group-{{ group.id }}">edit</span>
+    <h2>{{ group.name }}</h2>
+    <div>
+        {% for mark in group.marks %}
+            {% include 'mark-view.html' %}
+        {% endfor %}
+    </div>
+</div>
