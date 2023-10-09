@@ -1,13 +1,4 @@
 # helios
 
-To install dependencies:
+An application launch page built with Python + HTMX.
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run start
-```
