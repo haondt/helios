@@ -1,18 +1,25 @@
-<form hx-post="/groups" hx-trigger="end" hx-swap="none" id="form-groups">
+<form hx-post="/groups" hx-trigger="end" hx-swap="none" id="form-groups" class="flex flex-col gap-5">
     <p>TODO: search bar</p>
-    <div class="sortable">
+    <div class="sortable flex flex-col gap-25 align-center">
         {% for group in groups %}
-        <div>
-            <input type="hidden" name="ids" value="{{ group.id }}" form="form-groups">
-            <span class="sort-handle">::</span>
-            {% with group=group %}
-                {% if group.editing %}
-                    {% include 'group-edit.html' %}
-                {% else %}
+        <div class="border-1-0 width-650 padding-15 flex flex-row gap-10">
+            <i class="sort-handle icon-sm fa-solid fa-grip-vertical"></i>
+            <div class="flex flex-col">
+                <input type="hidden" name="ids" value="{{ group.id }}" form="form-groups">
+                {% with group=group %}
                     {% include 'group-view.html' %}
-                {% endif %}
-            {% endwith %}
+                {% endwith %}
+                <div>
+                    {% for mark in group.marks %}
+                        {% include 'mark-view.html' %}
+                    {% endfor %}
+                </div>
+                <div>
+                    <i class="icon-button fa-lg fa-solid fa-square-plus"></i>
+                </div>
+            </div>
         </div>
         {% endfor %}
+        <i class="icon-button fa-yuge fa-solid fa-square-plus"></i>
     </div>
 </form>

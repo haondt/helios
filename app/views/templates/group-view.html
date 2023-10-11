@@ -1,9 +1,4 @@
-<div id="group-{{ group.id }}">
-    <span hx-get="/group/{{ group.id }}/edit" hx-swap="outerHTML" hx-target="#group-{{ group.id }}">edit</span>
-    <h2>{{ group.name }}</h2>
-    <div>
-        {% for mark in group.marks %}
-            {% include 'mark-view.html' %}
-        {% endfor %}
-    </div>
+<div id="group-{{ group.id }}" class="flex flex-row align-center gap-10">
+    <span class="fs-18">{{ group.name }}</span>
+    <i class="icon-button fa-lg fa-solid fa-square-pen" hx-get="/group/{{ group.id }}/edit" hx-swap="outerHTML" hx-target="#group-{{ group.id }}"></i>
 </div>

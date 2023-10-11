@@ -1,9 +1,6 @@
-<form name="group-{{ group.id }}">
-    <input type='hidden' name="id" value="{{ group.id }}">
-    <input type='text' name="name" value="{{ group.name }}" form="group">
-    <div>
-        {% for mark in group.marks %}
-            {% include 'mark-view.html' %}
-        {% endfor %}
-    </div>
+<form name="group-{{ group.id }}" class="flex flex-row align-center gap-10">
+    <input type='hidden' name="id" value="{{ group.id }}" form="group-{{ group.id }}">
+    <input type='text' class="fs-18" name="name" value="{{ group.name }}" form="group-{{ group.id }}">
+    <i class="icon-button fa-lg fa-solid fa-floppy-disk"></i>
+    <i class="icon-button fa-lg fa-solid fa-trash"></i>
 </form>
