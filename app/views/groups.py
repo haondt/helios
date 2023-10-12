@@ -59,7 +59,18 @@ def apply(helios, data):
 
     @helios.route('/hx/groups/readonly', methods=['GET'])
     def get_groups_readonly():
-        return render_template('groups-readonly.html', groups=create_view_groups(data.state))
+        return render_template('groups-readonly.html', groups=create_view_groups(data.state), settings=data.state.settings)
+
+    @helios.route('/hx/groups/search', methods=['POST'])
+    def search_groups():
+        groups = create_view_groups(data.state)
+        q = request.form['search-query'].upper()
+        for group in groups:
+            if q in group.name.upper():
+                continue
+            group.marks = [m for m in group.marks if q in m.url.upper() or q in m.name.upper()]
+        groups = [g for g in groups if len(g.marks) > 0]
+        return render_template('groups-search-result.html', groups=groups)
 
     @helios.route('/hx/group/<id>', methods=['POST', 'GET'])
     def get_group(id):

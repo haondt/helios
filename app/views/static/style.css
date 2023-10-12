@@ -144,11 +144,11 @@
     flex-grow: 1;
 }
 
-input[type=text].search-query {
+input[type=search].search-query {
     border-bottom: 0;
 }
 
-input[type=text].search-query::placeholder {
+input[type=search].search-query::placeholder {
     color: var(--color-8);
 }
 
@@ -161,13 +161,13 @@ span, input, a {
     font-family: 'Courier New';
 }
 
-input[type=text] {
+input[type=text], input[type=search] {
     border: 0;
     padding: 0;
     border-bottom: 1px solid var(--color-9);
 }
 
-input[type=text]:focus {
+input[type=text]:focus, input[type=search]:focus {
     outline: none;
 }
 
@@ -206,6 +206,12 @@ span.spacer {
 
 .mark-name.readonly:hover {
     color: var(--color-6);
+}
+
+.mark-name.readonly:focus {
+    color: var(--color-9);
+    text-decoration: underline;
+    outline: none;
 }
 
 .mark-url {

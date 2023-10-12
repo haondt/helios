@@ -20,6 +20,7 @@ class Colors:
 class Settings:
     def __init__(self):
         self.colors = Colors()
+        self.search_delay_ms = 100
 class State:
     def __init__(self):
         self.groups = {}

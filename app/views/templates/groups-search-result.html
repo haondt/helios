@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-25 align-center" id="groups">
+    {% for group in groups %}
+    <div class="border-1-6 width-650 padding-15 flex flex-col">
+        <div class="mb-5" >
+            {% with group=group %}
+                {% include 'group-readonly.html' %}
+            {% endwith %}
+        </div>
+        <div>
+            {% for mark in group.marks %}
+                {% include 'mark-readonly.html' %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
