@@ -1,0 +1,29 @@
+<div class="flex flex-col align-right" id="groups">
+    <div class="flex flex-row">
+        <span class="spacer"></span>
+        <i class="icon-button icon-lg fa-solid fa-gear"
+            hx-trigger="click"
+            hx-target="#groups"
+            hx-swap="outerHTML"
+            hx-get="hx/groups"></i>
+    </div>
+    <div class="flex flex-col gap-5 align-center">
+        <p>TODO: search bar</p>
+        <div class="flex flex-col gap-25 align-center">
+            {% for group in groups %}
+            <div class="border-1-0 width-650 padding-15 flex flex-col">
+                <div class="mb-5" >
+                    {% with group=group %}
+                        {% include 'group-readonly.html' %}
+                    {% endwith %}
+                </div>
+                <div>
+                    {% for mark in group.marks %}
+                        {% include 'mark-readonly.html' %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

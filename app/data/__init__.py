@@ -7,6 +7,7 @@ class Mark:
         self.url  = ""
         self.name  = ""
         self.highlight  = ""
+        self.icon = ""
 class Group:
     def __init__(self):
         self.mark_ids = []
@@ -44,6 +45,7 @@ class Data:
     def add_mark(self, group_id, name, url):
         m = Mark()
         m.id = str(uuid.uuid4())
+        m.icon = 'fa-regular fa-bookmark'
         m.name = name
         m.url = url
         m.group_id = group_id

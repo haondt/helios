@@ -1,25 +1,38 @@
-<form hx-post="/groups" hx-trigger="end" hx-swap="none" id="form-groups" class="flex flex-col gap-5">
-    <p>TODO: search bar</p>
-    <div class="sortable flex flex-col gap-25 align-center">
-        {% for group in groups %}
-        <div class="border-1-0 width-650 padding-15 flex flex-row gap-10">
-            <i class="sort-handle icon-sm fa-solid fa-grip-vertical"></i>
-            <div class="flex flex-col">
-                <input type="hidden" name="ids" value="{{ group.id }}" form="form-groups">
-                {% with group=group %}
-                    {% include 'group-view.html' %}
-                {% endwith %}
-                <div>
-                    {% for mark in group.marks %}
-                        {% include 'mark-view.html' %}
-                    {% endfor %}
-                </div>
-                <div>
-                    <i class="icon-button fa-lg fa-solid fa-square-plus"></i>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-        <i class="icon-button fa-yuge fa-solid fa-square-plus"></i>
+<div class="flex flex-col align-right" id="groups">
+    <div class="flex flex-row">
+        <span class="spacer"></span>
+        <i class="icon-button icon-xl fa-solid fa-xmark"
+            hx-trigger="click"
+            hx-target="#groups"
+            hx-swap="outerHTML"
+            hx-get="hx/groups/readonly"></i>
     </div>
-</form>
+    <span style="height: 50px;"></span>
+    <form hx-post="hx/groups" hx-trigger="end" hx-swap="none" id="form-groups" class="flex flex-col gap-5">
+        <div class="sortable flex flex-col gap-25 align-center">
+            {% for group in groups %}
+            <div class="border-1-0 width-650 gap-15 padding-15 flex flex-row">
+                <input type="hidden" name="ids" value="{{ group.id }}" form="form-groups">
+                <i class="sort-handle icon-sm fa-solid fa-grip-vertical"></i>
+                <div class="flex flex-col flex-grow-1">
+                    <div class="mb-5">
+                        {% with group=group %}
+                            {% include 'group.html' %}
+                        {% endwith %}
+                    </div>
+                    <div>
+                        {% for mark in group.marks %}
+                            {% include 'mark.html' %}
+                        {% endfor %}
+                    </div>
+                    <div class="flex flex-col padding-5 align-center">
+                        <i class="icon-button icon-lg fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <i class="icon-button icon-lg fa-regular fa-trash-can"></i>
+            </div>
+            {% endfor %}
+            <i class="icon-button fa-yuge fa-solid fa-plus"></i>
+        </div>
+    </form>
+</div>
