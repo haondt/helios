@@ -25,7 +25,7 @@ def create_view_marks(state, mark_ids):
         if sm.url.startswith('http'):
             vm.link = sm.url
         else:
-            vm.link = "http://" + sm.url
+            vm.link = "//" + sm.url
         vm.url = sm.url
         vm.name = sm.name
         vm.icon = sm.icon

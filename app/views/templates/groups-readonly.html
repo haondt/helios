@@ -7,11 +7,14 @@
             hx-swap="outerHTML"
             hx-get="hx/groups"></i>
     </div>
-    <div class="flex flex-col gap-5 align-center">
-        <p>TODO: search bar</p>
+    <div class="flex flex-col gap-25 align-center">
+        <div class="flex flex-row gap-15 align-center border-1-9 width-650 padding-15">
+            <span class="search-prompt">~</span>
+            <input class="search-query fs-12" type="text" name="search-query" placeholder="Type to filter">
+        </div>
         <div class="flex flex-col gap-25 align-center">
             {% for group in groups %}
-            <div class="border-1-0 width-650 padding-15 flex flex-col">
+            <div class="border-1-6 width-650 padding-15 flex flex-col">
                 <div class="mb-5" >
                     {% with group=group %}
                         {% include 'group-readonly.html' %}

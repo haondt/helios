@@ -104,7 +104,9 @@
 .padding-25 { padding: 25px; }
 .padding-30 { padding: 30px; }
 
-.fs-12 { font-size: 14pt; }
+.fs-8 { font-size: 8pt; }
+.fs-10 { font-size: 10pt; }
+.fs-12 { font-size: 12pt; }
 .fs-14 { font-size: 14pt; }
 .fs-16 { font-size: 16pt; }
 .fs-18 { font-size: 18pt; }
@@ -120,17 +122,34 @@
 .icon-sm { font-size: 0.875em; }
 
 
-.border-1-0 {
-    border: 1px solid var(--color-6);
-}
+.border-1-6 { border: 1px solid var(--color-6); }
+.border-1-9 { border: 1px solid var(--color-9); }
 
 .width-650 {
     width: 650px;
 }
 
+
 .search-bar {
     border: 1px solid orange;
     width: 650px;
+}
+
+.search-prompt {
+    color: var(--color-6);
+}
+
+.search-query {
+    color: var(--color-14);
+    flex-grow: 1;
+}
+
+input[type=text].search-query {
+    border-bottom: 0;
+}
+
+input[type=text].search-query::placeholder {
+    color: var(--color-8);
 }
 
 body, input {
@@ -195,6 +214,8 @@ span.spacer {
 
 .mark-icon {
     color: var(--color-15);
+    width: 20px;
+    text-align: center;
 }
 
 
