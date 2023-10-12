@@ -1,9 +1,15 @@
-# helios
+<div align="center">
+
+  # helios
 
 An application launch page built with Python + HTMX.
 
-![](./nighttab.jpg)
+<img src="./nighttab.jpg" width="350">
 
-# screenshots
+
+
+# Screenshots
 
 ![](./screenshot1.jpg)
+
+</div>
