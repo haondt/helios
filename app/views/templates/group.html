@@ -1,4 +1,7 @@
-<div id="group-{{ group.id }}" class="flex flex-row align-center gap-10">
-    <i class="icon-button icon-xl fa-regular fa-pen-to-square" hx-get="hx/group/{{ group.id }}/edit" hx-swap="outerHTML" hx-target="#group-{{ group.id }}"></i>
+<div id="group-{{ group.id }}" class="flex flex-row align-center gap-10 show-hover">
     <span class="fs-18">{{ group.name }}</span>
+    <i class="icon-button icon-xl fa-solid fa-pencil"
+        hx-get="hx/group/{{ group.id }}/edit"
+        hx-swap="outerHTML"
+        hx-target="#group-{{ group.id }}"></i>
 </div>

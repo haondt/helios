@@ -1,7 +1,7 @@
 <div class="flex flex-col align-right" id="page">
     <div class="flex flex-row">
         <span class="spacer"></span>
-        <i class="icon-button icon-lg fa-solid fa-gear"
+        <i class="icon-button icon-lg fa-solid fa-pen"
             hx-trigger="click"
             hx-target="#page"
             hx-swap="outerHTML"
@@ -16,8 +16,7 @@
                 placeholder="Type to filter"
                 hx-post="hx/groups/search"
                 hx-trigger="keyup changed delay:{{ settings.search_delay_ms }}ms, search"
-                hx-target="#groups"
-                hx-indicator=".htmx-indicator">
+                hx-target="#groups">
         </div>
         <div class="flex flex-col gap-25 align-center" id="groups">
             {% for group in groups %}

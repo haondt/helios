@@ -1,6 +1,17 @@
-<div>
-    <span>TODO: ICON</span>
-    <input name='mark-name' type="text" value="{{ mark.name }}">
-    <input name='mark-url' type="text" value="{{ mark.url }}">
-</div>
+<form id="mark-{{ mark.id }}" name="mark-{{ mark.id }}"
+    hx-put="hx/mark/{{ mark.id }}"
+    hx-swap="outerHTML"
+    class="flex flex-row align-center gap-10">
+    <input name='id' type="hidden" value="{{ mark.id }}" form="mark-{{ mark.id }}">
+    <input class="fs-12 mark-edit" name='icon' type="text" value="{{ mark.icon }}" form="mark-{{ mark.id }}">
+    <span>[<input class="fs-12 mark-name mark-edit" name='name' placeholder="name" type="text" value="{{ mark.name }}" form="mark-{{ mark.id }}">]</span>
+    <span>(<input class="fs-12 mark-url mark-edit" name='url' placeholder="url" type="text" value="{{ mark.url }}" form="mark-{{ mark.id }}">)</span>
+    <i class="icon-button fa-sm fa-solid fa-floppy-disk"
+        _="on click send submit to #mark-{{ mark.id }}"></i>
+    <i class="icon-button fa-sm fa-solid fa-rotate-left"
+        hx-get="hx/mark/{{ mark.id }}"
+        hx-swap="outerHTML"
+        hx-trigger="click"
+        hx-target="#mark-{{ mark.id }}"></i>
+</form>
 

@@ -1,4 +1,5 @@
 import uuid
+import json
 
 class Mark:
     def __init__(self):
@@ -32,6 +33,8 @@ class Data:
     def __init__(self, config):
         self.state = State()
         pass 
+    def get_json(self):
+        return json.dumps(self.__dict__, default=lambda o: o.__dict__)
     def save(self):
         pass
     def load(self):

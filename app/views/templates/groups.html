@@ -11,7 +11,7 @@
     <form hx-post="hx/groups" hx-trigger="end" hx-swap="none" id="form-groups" class="flex flex-col gap-5">
         <div class="sortable flex flex-col gap-25 align-center">
             {% for group in groups %}
-            <div class="border-1-0 width-650 gap-15 padding-15 flex flex-row">
+            <div class="border-1-6 width-650 gap-15 padding-15 flex flex-row">
                 <input type="hidden" name="ids" value="{{ group.id }}" form="form-groups">
                 <i class="sort-handle icon-sm fa-solid fa-grip-vertical"></i>
                 <div class="flex flex-col flex-grow-1">
@@ -20,19 +20,28 @@
                             {% include 'group.html' %}
                         {% endwith %}
                     </div>
-                    <div>
+                    <div id="group-{{ group.id }}-marks">
                         {% for mark in group.marks %}
                             {% include 'mark.html' %}
                         {% endfor %}
                     </div>
-                    <div class="flex flex-col padding-5 align-center">
-                        <i class="icon-button icon-lg fa-solid fa-plus"></i>
+                    <div class="padding-5 show-hover mt-15 mb-10 mr-15 ml-15 flex flex-col align-center add-bar"
+                        hx-trigger="click"
+                        hx-post="hx/mark"
+                        hx-target="#group-{{ group.id }}-marks"
+                        hx-swap="beforeend"
+                        hx-vals='{"group_id": "{{ group.id }}"}'>
+                        <!--<i class="margin-10 icon-lg fa-solid fa-plus"></i>-->
+                        <span class="fs-12">click to add new bookmark</span>
                     </div>
                 </div>
                 <i class="icon-button icon-lg fa-regular fa-trash-can"></i>
             </div>
             {% endfor %}
-            <i class="icon-button fa-yuge fa-solid fa-plus"></i>
+            <div class="show-hover mt-5 padding-10 flex flex-col align-center add-bar"
+                style="width: 660px;">
+                <span class="fs-18">click to add new group</span>
+            </div>
         </div>
     </form>
 </div>

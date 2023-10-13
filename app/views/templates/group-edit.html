@@ -1,5 +1,14 @@
-<form name="group-{{ group.id }}" class="flex flex-row align-center gap-10">
+<form name="group-{{ group.id }}" id="group-{{ group.id }}" 
+    class="flex flex-row align-center gap-10"
+    hx-put="hx/group/{{ group.id }}"
+    hx-swap="outerHTML">
     <input type='hidden' name="id" value="{{ group.id }}" form="group-{{ group.id }}">
-    <i class="icon-button fa-lg fa-regular fa-floppy-disk"></i>
-    <input type='text' class="fs-18" name="name" value="{{ group.name }}" form="group-{{ group.id }}">
+    <input type='text' class="fs-18 show-hover" name="name" value="{{ group.name }}" form="group-{{ group.id }}">
+    <i class="icon-button fa-lg fa-solid fa-floppy-disk"
+        _="on click send submit to #group-{{ group.id }}"></i>
+    <i class="icon-button fa-lg fa-solid fa-rotate-left"
+        hx-get="hx/group/{{ group.id }}"
+        hx-swap="outerHTML"
+        hx-trigger="click"
+        hx-target="#group-{{ group.id }}"></i>
 </form>

@@ -83,6 +83,13 @@
 .gap-25 { gap: 25px; }
 .gap-30 { gap: 30px; }
 
+.mt-5 { margin-top: 5px; }
+.mt-10 { margin-top: 10px; }
+.mt-15 { margin-top: 15px; }
+.mt-20 { margin-top: 20px; }
+.mt-25 { margin-top: 25px; }
+.mt-30 { margin-top: 30px; }
+
 .mb-5 { margin-bottom: 5px; }
 .mb-10 { margin-bottom: 10px; }
 .mb-15 { margin-bottom: 15px; }
@@ -97,12 +104,26 @@
 .mr-25 { margin-right: 25px; }
 .mr-30 { margin-right: 30px; }
 
+.ml-5 { margin-left: 5px; }
+.ml-10 { margin-left: 10px; }
+.ml-15 { margin-left: 15px; }
+.ml-20 { margin-left: 20px; }
+.ml-25 { margin-left: 25px; }
+.ml-30 { margin-left: 30px; }
+
 .padding-5 { padding: 5px; }
 .padding-10 { padding: 10px; }
 .padding-15 { padding: 15px; }
 .padding-20 { padding: 20px; }
 .padding-25 { padding: 25px; }
 .padding-30 { padding: 30px; }
+
+.margin-5 { margin: 5px; }
+.margin-10 { margin: 10px; }
+.margin-15 { margin: 15px; }
+.margin-20 { margin: 20px; }
+.margin-25 { margin: 25px; }
+.margin-30 { margin: 30px; }
 
 .fs-8 { font-size: 8pt; }
 .fs-10 { font-size: 10pt; }
@@ -124,6 +145,10 @@
 
 .border-1-6 { border: 1px solid var(--color-6); }
 .border-1-9 { border: 1px solid var(--color-9); }
+.border-1-7 { border: 1px solid var(--color-7); }
+.border-1-0 { border: 1px solid var(--color-0); }
+.border-1-8 { border: 1px solid var(--color-8); }
+.border-1-15 { border: 1px solid var(--color-15); }
 
 .width-650 {
     width: 650px;
@@ -157,7 +182,7 @@ body, input {
     color: var(--color-15);
 }
 
-span, input, a {
+:root {
     font-family: 'Courier New';
 }
 
@@ -171,11 +196,11 @@ input[type=text]:focus, input[type=search]:focus {
     outline: none;
 }
 
-.fa-gear, .fa-xmark {
+.fa-pen, .fa-xmark {
     color: var(--color-7);
 }
 
-.fa-gear:hover, .fa-xmark:hover {
+.fa-pen:hover, .fa-xmark:hover {
     color: var(--color-15);
 }
 
@@ -204,6 +229,10 @@ span.spacer {
     text-decoration: underline;
 }
 
+.mark-name.mark-edit {
+    text-decoration: none;
+}
+
 .mark-name.readonly:hover {
     color: var(--color-6);
 }
@@ -224,4 +253,32 @@ span.spacer {
     text-align: center;
 }
 
+.mark-edit {
+    text-align: center;
+    width: 160px;
+}
+
+input[type=text].mark-edit::placeholder {
+    color: var(--color-14);
+}
+
+.ghost {
+    opacity: 0.6;
+}
+
+.show-hover:hover, .mark-edit:hover {
+    background-color: var(--color-7);
+}
+
+.add-bar {
+    cursor: pointer;
+}
+
+.add-bar span {
+    color: var(--color-7);
+}
+
+.add-bar:hover span {
+    color: var(--color-15);
+}
 

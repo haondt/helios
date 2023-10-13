@@ -1,37 +1,11 @@
 from flask import Flask, jsonify, render_template, request
+from .marks import ViewMark, create_view_marks
 
 class ViewGroup:
     def __init__(self):
         self.id = ""
         self.name = ""
         self.marks = []
-class ViewMark:
-    def __init__(self):
-        self.id  = ""
-        self.group_id  = ""
-        self.url  = ""
-        self.link = ""
-        self.name  = ""
-        self.highlight  = ""
-        self.icon = ""
-
-def create_view_marks(state, mark_ids):
-    marks = []
-    for mid in mark_ids:
-        sm = state.marks[mid]
-        vm = ViewMark()
-        vm.id = sm.id
-        vm.group_id = sm.group_id
-        if sm.url.startswith('http'):
-            vm.link = sm.url
-        else:
-            vm.link = "//" + sm.url
-        vm.url = sm.url
-        vm.name = sm.name
-        vm.icon = sm.icon
-        vm.highlight = sm.highlight
-        marks.append(vm)
-    return marks
 
 def create_view_groups(state):
     return [create_view_group(state, gid) for gid in state.group_ids]
@@ -72,13 +46,13 @@ def apply(helios, data):
         groups = [g for g in groups if len(g.marks) > 0]
         return render_template('groups-search-result.html', groups=groups)
 
-    @helios.route('/hx/group/<id>', methods=['POST', 'GET'])
-    def get_group(id):
-        if request.method == 'POST':
-            return None
-        elif request.method == 'GET':
-            return render_template('group.html', group=create_view_group(data.state, id))
-        return None
+    @helios.route('/hx/group/<id>', methods=['PUT', 'GET'])
+    def group(id):
+        if request.method == 'PUT':
+            id = request.form['id']
+            name = request.form['name']
+            data.state.groups[id].name = name
+        return render_template('group.html', group=create_view_group(data.state, id))
 
     @helios.route('/hx/group/<id>/edit', methods=['GET'])
     def edit_group(id):

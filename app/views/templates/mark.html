@@ -1,7 +1,18 @@
-<div id="mark-{{ mark.id }}">
-    <i class="icon-button icon-lg fa-regular fa-pen-to-square" hx-get="hx/mark/{{ mark.id }}/edit" hx-swap="outerHTML" hx-target="#mark-{{ mark.id }}"></i>
+<div id="mark-{{ mark.id }}"
+    class="flex flex-row align-center gap-5 show-hover">
+    <span style="margin-left: 2px;"></span>
     <i class="mark-icon {{ mark.icon }}"></i>
-    [<span class="mark-name">{{ mark.name }}</span>]
-    (<span class="mark-url">{{ mark.url }}</span>)
+    <div>[<span class="mark-name">{{ mark.name }}</span>]</div>
+    <div>(<span class="mark-url">{{ mark.url }}</span>)</div>
+    <i class="icon-button icon-lg fa-solid fa-pencil"
+        hx-get="hx/mark/{{ mark.id }}/edit"
+        hx-swap="outerHTML"
+        hx-target="#mark-{{ mark.id }}"></i>
+    <span class="spacer"></span>
+    <i class="icon-button icon-sm fa-regular fa-trash-can"
+        hx-delete="hx/mark/{{ mark.id }}"
+        hx-swap="outerHTML"
+        hx-target="#mark-{{ mark.id }}"></i>
+    <span style="margin-right: 2px;"></span>
 </div>
 
