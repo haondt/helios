@@ -37,10 +37,15 @@
     --color-15: #eacfda;
 }
 
-.sort-handle {
-    cursor: grab;
-    cursor: -webkit-grabbing;
+body, input {
+    background-color: var(--color-bg);
+    color: var(--color-15);
 }
+
+:root {
+    font-family: 'Courier New';
+}
+
 
 .icon-button {
     cursor: pointer;
@@ -50,6 +55,12 @@
 .icon-button:hover {
     color: var(--color-8);
 }
+
+.icon-xl { font-size: 1.5em; }
+.icon-lg { font-size: 1.25em; }
+.icon-sm { font-size: 0.875em; }
+
+.fa-yuge { font-size: 5em; }
 
 .flex {
     display: flex;
@@ -74,7 +85,6 @@
 .align-right {
     align-items: right;
 }
-
 
 .gap-5 { gap: 5px; }
 .gap-10 { gap: 10px; }
@@ -134,14 +144,6 @@
 .fs-20 { font-size: 20pt; }
 .fs-22 { font-size: 22pt; }
 
-.fa-yuge {
-    font-size: 5em;
-}
-
-.icon-xl { font-size: 1.5em; }
-.icon-lg { font-size: 1.25em; }
-.icon-sm { font-size: 0.875em; }
-
 
 .border-1-6 { border: 1px solid var(--color-6); }
 .border-1-9 { border: 1px solid var(--color-9); }
@@ -177,14 +179,6 @@ input[type=search].search-query::placeholder {
     color: var(--color-8);
 }
 
-body, input {
-    background-color: var(--color-bg);
-    color: var(--color-15);
-}
-
-:root {
-    font-family: 'Courier New';
-}
 
 input[type=text], input[type=search] {
     border: 0;
@@ -194,6 +188,11 @@ input[type=text], input[type=search] {
 
 input[type=text]:focus, input[type=search]:focus {
     outline: none;
+}
+
+.sort-handle {
+    cursor: grab;
+    cursor: -webkit-grabbing;
 }
 
 .fa-pen, .fa-xmark {
@@ -210,14 +209,6 @@ input[type=text]:focus, input[type=search]:focus {
 
 .fa-trash-can:hover {
     color: var(--color-9);
-}
-
-.fa-plus {
-    color: var(--color-7);
-}
-
-.fa-plus:hover {
-    color: var(--color-15);
 }
 
 span.spacer {
