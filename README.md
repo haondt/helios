@@ -2,7 +2,7 @@
 
   # helios
 
-A start page built with Python + HTMX.
+A start page built with Python, htmx and Hyperscript.
 
 <img src="./nighttab.jpg" width="350">
 
