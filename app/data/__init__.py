@@ -57,8 +57,8 @@ class Data:
         self.state.marks[m.id] = m
         return m
     def pop_group(self, id):
-        for mark in self.state.groups[id].marks:
-            self.state.marks.pop(mark.id)
+        for mark_id in self.state.groups[id].mark_ids:
+            self.state.marks.pop(mark_id)
         self.state.group_ids.remove(id)
         return self.state.groups.pop(id)
     def pop_mark(self, id):

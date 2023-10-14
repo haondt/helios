@@ -46,13 +46,21 @@ def apply(helios, data):
         groups = [g for g in groups if len(g.marks) > 0]
         return render_template('groups-search-result.html', groups=groups)
 
-    @helios.route('/hx/group/<id>', methods=['PUT', 'GET'])
+    @helios.route('/hx/group/<id>', methods=['PUT', 'GET', 'DELETE'])
     def group(id):
         if request.method == 'PUT':
             id = request.form['id']
             name = request.form['name']
             data.state.groups[id].name = name
+        elif request.method == 'DELETE':
+            data.pop_group(id)
+            return ""
         return render_template('group.html', group=create_view_group(data.state, id))
+
+    @helios.route('/hx/group', methods=['POST'])
+    def create_group():
+        group = data.add_group("")
+        return render_template('group-and-marks.html', group=create_view_group(data.state, group.id), edit_group=True)
 
     @helios.route('/hx/group/<id>/edit', methods=['GET'])
     def edit_group(id):

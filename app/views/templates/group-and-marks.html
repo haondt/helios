@@ -1,0 +1,41 @@
+<div class="border-1-6 width-650 gap-15 padding-15 flex flex-row"
+    id="group-{{ group.id }}-and-marks">
+    <input type="hidden" name="ids" value="{{ group.id }}" form="form-groups">
+    <i class="sort-handle icon-sm fa-solid fa-grip-vertical"></i>
+    <div class="flex flex-col flex-grow-1">
+        <div class="mb-5">
+            {% with group=group %}
+                {% if edit_group %}
+                    {% include 'group-edit.html' %}
+                {% else %}
+                    {% include 'group.html' %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <form id="form-group-{{ group.id }}-marks"
+            hx-trigger="mark_sort"
+            hx-post="hx/marks"
+            hx-swap="none"
+            hx-vals='{"group_id": "{{ group.id }}"}'></form>
+            <div  class="sortable"
+                _="on end halt the event send mark_sort to #form-group-{{ group.id }}-marks"
+                id="group-{{ group.id }}-marks">
+                {% for mark in group.marks %}
+                    {% include 'mark.html' %}
+                {% endfor %}
+            </div>
+        <div class="padding-5 show-hover mt-15 mb-10 mr-15 ml-15 flex flex-col align-center add-bar"
+            hx-trigger="click"
+            hx-post="hx/mark"
+            hx-target="#group-{{ group.id }}-marks"
+            hx-swap="beforeend"
+            hx-vals='{"group_id": "{{ group.id }}"}'>
+            <!--<i class="margin-10 icon-lg fa-solid fa-plus"></i>-->
+            <span class="fs-12">click to add new bookmark</span>
+        </div>
+    </div>
+    <i class="icon-button icon-lg fa-regular fa-trash-can"
+        hx-delete="hx/group/{{ group.id }}"
+        hx-swap="outerHTML"
+        hx-target="#group-{{ group.id }}-and-marks"></i>
+</div>
