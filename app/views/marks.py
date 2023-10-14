@@ -39,8 +39,6 @@ def apply(helios, data):
     @helios.route('/hx/marks', methods=['POST'])
     def sort_marks():
         group_id = request.form['group_id']
-        print(data.state.groups.keys())
-        print(group_id)
         group = data.state.groups[group_id]
         ids = request.form.getlist('ids')
         assert len(set(ids)) == len(set(group.mark_ids))
