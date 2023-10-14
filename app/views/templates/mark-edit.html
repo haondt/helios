@@ -6,8 +6,8 @@
     <input type="hidden" name="ids" value="{{ mark.id }}" form="form-group-{{ mark.group_id }}-marks">
     <input name='id' type="hidden" value="{{ mark.id }}" form="mark-{{ mark.id }}">
     <input class="fs-12 mark-edit" name='icon' type="text" value="{{ mark.icon }}" form="mark-{{ mark.id }}">
-    <span>[<input class="fs-12 mark-name mark-edit" name='name' placeholder="name" type="text" value="{{ mark.name }}" form="mark-{{ mark.id }}">]</span>
-    <span>(<input class="fs-12 mark-url mark-edit" name='url' placeholder="url" type="text" value="{{ mark.url }}" form="mark-{{ mark.id }}">)</span>
+    <span class="flex flex-row align-center">[<input class="fs-12 mark-name mark-edit" name='name' placeholder="name" type="text" value="{{ mark.name }}" form="mark-{{ mark.id }}">]</span>
+    <span class="flex flex-row align-center">(<input class="fs-12 mark-url mark-edit" name='url' placeholder="url" type="text" value="{{ mark.url }}" form="mark-{{ mark.id }}">)</span>
     <i class="icon-button fa-sm fa-solid fa-floppy-disk"
         _="on click send submit to #mark-{{ mark.id }}"></i>
     <i class="icon-button fa-sm fa-solid fa-rotate-left"
