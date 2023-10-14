@@ -1,5 +1,7 @@
 <div id="mark-{{ mark.id }}"
     class="flex flex-row align-center gap-5 show-hover">
+    <i class="sort-handle icon-sm fa-solid fa-grip-vertical"></i>
+    <input type="hidden" name="ids" value="{{ mark.id }}" form="form-group-{{ mark.group_id }}-marks">
     <span style="margin-left: 2px;"></span>
     <i class="mark-icon {{ mark.icon }}"></i>
     <div>[<span class="mark-name">{{ mark.name }}</span>]</div>

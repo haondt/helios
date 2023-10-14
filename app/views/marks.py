@@ -36,6 +36,18 @@ def apply(helios, data):
         mark = data.add_mark(request.form['group_id'], "", "")
         return render_template('mark-edit.html', mark=create_view_mark(data.state, mark.id))
 
+    @helios.route('/hx/marks', methods=['POST'])
+    def sort_marks():
+        group_id = request.form['group_id']
+        print(data.state.groups.keys())
+        print(group_id)
+        group = data.state.groups[group_id]
+        ids = request.form.getlist('ids')
+        assert len(set(ids)) == len(set(group.mark_ids))
+        assert all([i in group.mark_ids for i in ids])
+        group.mark_ids = ids
+        return ''
+
     @helios.route('/hx/mark/<id>', methods=['GET', 'PUT', 'DELETE'])
     def mark(id):
         if request.method == 'PUT':
