@@ -31,9 +31,8 @@ So I created helios to address these problems. It sacrifices customization for s
 
 </div>
 
-Install the requirements and run `server.py` to develop locally.
+Use the development docker compose file.
 
-```
-pip install -r requirements.txt
-python3 server.py
+```bash
+docker compose -f docker-compose.dev.yml up
 ```
