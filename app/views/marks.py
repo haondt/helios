@@ -34,6 +34,7 @@ def apply(helios, data):
     @helios.route('/hx/mark', methods=['POST'])
     def create_mark():
         mark = data.add_mark(request.form['group_id'], "", "")
+        data.save()
         return render_template('mark-edit.html', mark=create_view_mark(data.state, mark.id))
 
     @helios.route('/hx/marks', methods=['POST'])
@@ -44,6 +45,7 @@ def apply(helios, data):
         assert len(set(ids)) == len(set(group.mark_ids))
         assert all([i in group.mark_ids for i in ids])
         group.mark_ids = ids
+        data.save()
         return ''
 
     @helios.route('/hx/mark/<id>', methods=['GET', 'PUT', 'DELETE'])
@@ -54,12 +56,13 @@ def apply(helios, data):
             mark.name = request.form['name']
             mark.url = request.form['url']
             mark.icon = request.form['icon']
+            data.save()
         elif request.method == 'DELETE':
             data.pop_mark(id)
+            data.save()
             return ""
         return render_template('mark.html', mark=create_view_mark(data.state, id))
 
     @helios.route('/hx/mark/<id>/edit', methods=['GET'])
     def edit_mark(id):
-        mark = data.state.marks[id]
         return render_template('mark-edit.html', mark=create_view_mark(data.state, id))

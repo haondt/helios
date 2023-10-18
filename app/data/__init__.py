@@ -115,7 +115,8 @@ class Data:
         return json.dumps(self.__dict__, default=lambda o: o.__dict__)
     def save(self):
         with open(self.data_file, 'w') as f:
-            f.write(self.get_json())
+            j = json.dumps(self.state, default=lambda o: o.__dict__)
+            f.write(j)
     def load(self):
         with open(self.data_file, 'r') as f:
             self.state = State()

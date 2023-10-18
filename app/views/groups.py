@@ -29,6 +29,7 @@ def apply(helios, data):
             assert len(set(ids)) == len(set(data.state.group_ids))
             assert all([i in data.state.group_ids for i in ids])
             data.state.group_ids = ids
+            data.save()
             return render_template('groups.html', groups=create_view_groups(data.state))
 
     @helios.route('/hx/groups/readonly', methods=['GET'])
@@ -52,14 +53,17 @@ def apply(helios, data):
             id = request.form['id']
             name = request.form['name']
             data.state.groups[id].name = name
+            data.save()
         elif request.method == 'DELETE':
             data.pop_group(id)
+            data.save()
             return ""
         return render_template('group.html', group=create_view_group(data.state, id))
 
     @helios.route('/hx/group', methods=['POST'])
     def create_group():
         group = data.add_group("")
+        data.save()
         return render_template('group-and-marks.html', group=create_view_group(data.state, group.id), edit_group=True)
 
     @helios.route('/hx/group/<id>/edit', methods=['GET'])
