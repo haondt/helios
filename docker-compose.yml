@@ -8,5 +8,4 @@ services:
       - ./helios.yml:/config/helios.yml
       - ./data.json:/config/data.json
     ports:
-      - 5000:5000
-    entrypoint: ["python3", "-u", "server.py"]
+      - 8000:8000
