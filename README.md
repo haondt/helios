@@ -2,6 +2,10 @@
 
   # helios
 
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/haondt/helios/github-actions.yml)](https://github.com/haondt/helios/actions/workflows/github-actions.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/haumea/helios)](https://hub.docker.com/r/haumea/helios/)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/haondt/helios)](https://github.com/haondt/helios/releases/latest)
+
 A start page built with Python, htmx and Hyperscript.
 
 <img src="./nighttab.jpg" width="350">
