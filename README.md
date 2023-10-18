@@ -24,3 +24,16 @@ So I created helios to address these problems. It sacrifices customization for s
 ![](./screenshot1.jpg)
 
 </div>
+
+<div align="center">
+
+# Development
+
+</div>
+
+Install the requirements and run `server.py` to develop locally.
+
+```
+pip install -r requirements.txt
+python3 server.py
+```
