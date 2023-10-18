@@ -1,0 +1,10 @@
+version: '3'
+services:
+  helios:
+    image: haumea/helios:latest
+    volumes:
+      - ./helios.yml:/config/helios.yml
+      - helios_data:/data
+volumes:
+  helios_data:
+

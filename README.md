@@ -27,6 +27,24 @@ So I created helios to address these problems. It sacrifices customization for s
 
 <div align="center">
 
+# Deployment
+
+</div>
+
+helios can be deployed with docker.
+
+```yml
+services:
+  helios:
+    image: haumea/helios:latest
+    volumes:
+      - ./helios.yml:/config/helios.yml
+```
+
+See the [sample configuration](./example) for a full example. 
+
+<div align="center">
+
 # Development
 
 </div>

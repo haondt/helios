@@ -1,0 +1,3 @@
+helios:
+  data_file: '/config/data.json'
+  search_delay_ms: 100

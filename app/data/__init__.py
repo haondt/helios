@@ -1,5 +1,6 @@
 import uuid
 import json
+import os
 
 class Mark:
     def __init__(self):
@@ -118,9 +119,10 @@ class Data:
             j = json.dumps(self.state, default=lambda o: o.__dict__)
             f.write(j)
     def load(self):
-        with open(self.data_file, 'r') as f:
-            self.state = State()
-            self.state.from_json(json.loads(f.read()))
+        self.state = State()
+        if os.path.isfile(self.data_file):
+            with open(self.data_file, 'r') as f:
+                self.state.from_json(json.loads(f.read()))
     def add_group(self, name):
         g = Group()
         g.id = str(uuid.uuid4())
