@@ -5,8 +5,6 @@ from app import data
 from app.data import Data
 
 def Helios(config):
-    if 'data_file' not in config:
-        config['data_file'] = './data.json'
     d = Data(config)
     d.load()
 

@@ -1,0 +1,11 @@
+version: '3'
+services:
+  helios:
+    build:
+      context: .
+    container_name: helios
+    volumes:
+      - ./helios.yml:/config/helios.yml
+      - ./data.json:/config/data.json
+    ports:
+      - 5000:5000

@@ -106,12 +106,11 @@ class State:
             self.settings = Settings()
             self.settings.from_json(d['settings'])
 
-
-
 class Data:
     def __init__(self, config):
         self.state = State()
         self.data_file = config['data_file']
+        self.state.settings.from_json(config)
     def get_json(self):
         return json.dumps(self.__dict__, default=lambda o: o.__dict__)
     def save(self):
