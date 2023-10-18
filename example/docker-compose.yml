@@ -5,6 +5,8 @@ services:
     volumes:
       - ./helios.yml:/config/helios.yml
       - helios_data:/data
+    ports:
+      - 8000:8000
 volumes:
   helios_data:
 
