@@ -7,5 +7,5 @@ RUN pip install gunicorn
 COPY ./app ./app
 COPY ./server.py .
 
-ENTRYPOINT ["gunicorn", "-w", "2", "-b", "0.0.0.0", "server:helios"]
+ENTRYPOINT ["gunicorn", "-w", "1", "-b", "0.0.0.0", "server:helios"]
 
