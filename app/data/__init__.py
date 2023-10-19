@@ -46,7 +46,7 @@ class Group:
 class Settings:
     def __init__(self):
         self.search_delay_ms = 100
-        self.mark_width = 60
+        self.mark_width = 65
         self.data_file = './data.json'
     def __str__(self):
         s = 'colors:\n'
