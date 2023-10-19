@@ -30,9 +30,9 @@ So I created helios to address these problems. It sacrifices customization for s
   
 # Screenshots
 
-![](./screenshot1.jpg)
+![](./screenshot1.png)
 
-![](./screenshot2.jpg)
+![](./screenshot2.png)
 
 </div>
 
