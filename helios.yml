@@ -1,3 +1,4 @@
 helios:
   data_file: '/config/data.json'
   search_delay_ms: 100
+  mark_width: 65

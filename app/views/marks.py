@@ -6,12 +6,17 @@ class ViewMark:
         self.id  = ""
         self.group_id  = ""
         self.url  = ""
+        self.display_url = ""
         self.link = ""
         self.name  = ""
         self.highlight  = ""
         self.icon = ""
 
-def create_view_mark(state, mark_id):
+class ViewMarkOptions:
+    def __init__(self, mark_width):
+        self.mark_width = mark_width
+
+def create_view_mark(state, options, mark_id):
     sm = state.marks[mark_id]
     vm = ViewMark()
     vm.id = sm.id
@@ -25,17 +30,32 @@ def create_view_mark(state, mark_id):
     vm.icon = sm.icon
     vm.highlight = sm.highlight
 
+    partial_mark_len = len("[] ()") + len(vm.name)
+    allowed_url_len = options.mark_width - partial_mark_len
+    if allowed_url_len < len(vm.url) and allowed_url_len > 0:
+        vm.display_url = vm.url[:max(0, allowed_url_len-3)] + "..."
+    else:
+        vm.display_url = vm.url
+
     return vm
 
-def create_view_marks(state, mark_ids):
-    return [create_view_mark(state, mid) for mid in mark_ids]
+def create_view_mark_options(base_options, readonly):
+    if readonly:
+        return ViewMarkOptions(max(1, base_options.mark_width))
+    else:
+        return ViewMarkOptions(max(1, base_options.mark_width-14))
+
+def create_view_marks(state, options, mark_ids):
+    return [create_view_mark(state, options, mid) for mid in mark_ids]
 
 def apply(helios, data):
+    view_mark_options = create_view_mark_options(data.settings, False)
+
     @helios.route('/hx/mark', methods=['POST'])
     def create_mark():
         mark = data.add_mark(request.form['group_id'], "", "")
         data.save()
-        return render_template('mark-edit.html', mark=create_view_mark(data.state, mark.id))
+        return render_template('mark-edit.html', mark=create_view_mark(data.state, data.settings, mark.id))
 
     @helios.route('/hx/marks', methods=['POST'])
     def sort_marks():
@@ -61,8 +81,8 @@ def apply(helios, data):
             data.pop_mark(id)
             data.save()
             return ""
-        return render_template('mark.html', mark=create_view_mark(data.state, id))
+        return render_template('mark.html', mark=create_view_mark(data.state, view_mark_options, id))
 
     @helios.route('/hx/mark/<id>/edit', methods=['GET'])
     def edit_mark(id):
-        return render_template('mark-edit.html', mark=create_view_mark(data.state, id))
+        return render_template('mark-edit.html', mark=create_view_mark(data.state, data.settings, id))

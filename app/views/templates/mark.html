@@ -5,7 +5,7 @@
     <span style="margin-left: 2px;"></span>
     <i class="mark-icon {{ mark.icon }}"></i>
     <div>[<span class="mark-name">{{ mark.name }}</span>]</div>
-    <div>(<span class="mark-url">{{ mark.url }}</span>)</div>
+    <div>(<span class="mark-url">{{ mark.display_url }}</span>)</div>
     <i class="icon-button icon-sm fa-solid fa-pencil"
         hx-get="hx/mark/{{ mark.id }}/edit"
         hx-swap="outerHTML"

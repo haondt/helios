@@ -43,37 +43,26 @@ class Group:
         self.id = d['id'] if 'id' in d else self.id
         self.name = d['name'] if 'name' in d else self.name
 
-class Colors:
-    def __init__(self):
-        self.background  = ""
-        self.foreground  = ""
-    def __str__(self):
-        s = f'background: {self.background}\n'
-        s += f'foreground: {self.foreground}'
-        return s
-    def from_json(self, d):
-        self.background = d['background'] if 'background' in d else self.background
-        self.foreground = d['foreground'] if 'foreground' in d else self.foreground
-    
 class Settings:
     def __init__(self):
-        self.colors = Colors()
         self.search_delay_ms = 100
+        self.mark_width = 60
+        self.data_file = './data.json'
     def __str__(self):
         s = 'colors:\n'
         s += '\n'.join([f'  {i}' for i in str(self.colors).split('\n')]) + '\n'
         s += f'search_delay: {self.search_delay_ms}'
         return s
     def from_json(self, d):
-        self.colors.from_json(d['colors']) if 'colors' in d else self.colors
         self.search_delay_ms = int(d['search_delay_ms']) if 'search_delay_ms' in d else self.search_delay_ms
+        self.mark_width = int(d['mark_width']) if 'mark_width' in d else self.mark_width
+        self.data_file = d['data_file'] if 'data_file' in d else self.data_file
 
 class State:
     def __init__(self):
         self.groups = {}
         self.marks = {}
         self.group_ids = []
-        self.settings = Settings()
     def __str__(self):
         s = 'settings:\n'
         s += '\n'.join([f'  {i}' for i in str(self.settings).split('\n')]) + '\n'
@@ -103,25 +92,22 @@ class State:
                 self.marks[mid] = m
         if 'group_ids' in d:
             self.group_ids = [str(i) for i in d['group_ids']]
-        if 'settings' in d:
-            self.settings = Settings()
-            self.settings.from_json(d['settings'])
 
 class Data:
     def __init__(self, config):
         self.state = State()
-        self.data_file = config['data_file']
-        self.state.settings.from_json(config)
+        self.settings = Settings()
+        self.settings.from_json(config)
     def get_json(self):
         return json.dumps(self.__dict__, default=lambda o: o.__dict__)
     def save(self):
-        with open(self.data_file, 'w') as f:
+        with open(self.settings.data_file, 'w') as f:
             j = json.dumps(self.state, default=lambda o: o.__dict__)
             f.write(j)
     def load(self):
         self.state = State()
-        if os.path.isfile(self.data_file):
-            with open(self.data_file, 'r') as f:
+        if os.path.isfile(self.settings.data_file):
+            with open(self.settings.data_file, 'r') as f:
                 self.state.from_json(json.loads(f.read()))
     def add_group(self, name):
         g = Group()

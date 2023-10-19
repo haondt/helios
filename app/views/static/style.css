@@ -42,8 +42,12 @@ body, input {
     color: var(--color-15);
 }
 
-:root {
-    font-family: 'Courier New';
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('/static/RobotoMono-Regular.ttf') format('truetype');
+}
+:root, input {
+    font-family: 'Roboto Mono';
 }
 
 
@@ -175,10 +179,13 @@ input[type=search].search-query {
     border-bottom: 0;
 }
 
+input[type=search].search-query::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
 input[type=search].search-query::placeholder {
     color: var(--color-8);
 }
-
 
 input[type=text], input[type=search] {
     border: 0;
@@ -246,7 +253,7 @@ span.spacer {
 
 .mark-edit {
     text-align: center;
-    width: 160px;
+    width: 150px;
 }
 
 input[type=text].mark-edit::placeholder {
