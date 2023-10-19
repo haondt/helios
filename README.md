@@ -32,6 +32,8 @@ So I created helios to address these problems. It sacrifices customization for s
 
 ![](./screenshot1.jpg)
 
+![](./screenshot2.jpg)
+
 </div>
 
 <div align="center">
