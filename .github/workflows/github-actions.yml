@@ -6,11 +6,11 @@ on:
 
 jobs:
   docker-build-and-push:
-    uses: haondt/github-workflows/.github/workflows/docker-build-and-push.yml@main
+    uses: haondt/github-workflows/.github/workflows/docker-hub-build-and-push.yml@main
     secrets: inherit
     with:
-      REGISTRY: docker-hub
-      IMAGE_NAME: helios
-      REPOSITORY: haumea
-      BUILD_CONTEXT: .
-      DOCKERFILE: Dockerfile
+      registry: docker-hub
+      image: helios
+      repository: haumea
+      context: .
+      file: Dockerfile
