@@ -9,7 +9,6 @@ jobs:
     uses: haondt/github-workflows/.github/workflows/docker-hub-build-and-push.yml@main
     secrets: inherit
     with:
-      registry: docker-hub
       image: helios
       repository: haumea
       context: .
